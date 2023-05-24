@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Lista de hospitales</title>
+        <div th:insert="~{fragments/general.html :: estilo}"></div>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-md-6 offset-md-3">
+                    <h2>Nuevo Estudiante</h2>
+                    <hr/>
+                    <form method="post" th:action="@{/estudiante/save}" th:object="${usuario}">
+                        <div class="mb-3">
+                            <label for="productname" class="form-label">Nombres</label>
+                            <input type="text" class="form-control" id="productname" th:field="*{nombres}" >
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="apellido" class="form-label">Apellidos</label>
+                            <input type="text" class="form-control" id="apellido" th:field="*{apellidos}" >
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="dni" class="form-label">DNI</label>
+                            <input type="text" class="form-control" id="dni" th:field="*{dni}" >
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="edad" class="form-label">Edad</label>
+                            <input type="text" class="form-control" id="edad" th:field="*{edad}" >
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="correo" class="form-label">Correo</label>
+                            <input type="text" class="form-control" id="correo" th:field="*{correo}" >
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="pass" class="form-label">Contraseña</label>
+                            <input type="text" class="form-control" id="pass" th:field="*{password}" >
+                        </div>
+
+                        <input th:field="*{activo}" th:value="${1}" type="hidden"/>
+
+                        <div class="mb-3">
+                            <label class="form-label">Rol</label>
+                            <select class="form-select" th:field="*{rolid}">
+                                <option th:each="rol : ${roles}" th:value="${rol.id}"
+                                        th:text="${rol.nombre}"></option>
+                            </select>
+                        </div>
+
+                        <a th:href="@{'/estudiante/lista'}" class="btn btn-danger">Cancelar</a>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
