@@ -12,6 +12,11 @@
                     <h2>Nuevo Estudiante</h2>
                     <hr/>
                     <form method="post" th:action="@{/estudiante/save}" th:object="${usuario}">
+
+                        <div class="mb-3">
+                            <input th:field="*{id}" type="hidden" class="form-control" >
+                        </div>
+
                         <div class="mb-3">
                             <label for="productname" class="form-label">Nombres</label>
                             <input type="text" class="form-control" id="productname" th:field="*{nombres}" >
@@ -42,7 +47,7 @@
                             <input type="text" class="form-control" id="pass" th:field="*{password}" >
                         </div>
 
-                        <input th:field="*{activo}" th:value="${1}" type="hidden"/>
+                        <input th:field="*{activo}" th:value="1" type="hidden"/>
 
                         <div class="mb-3">
                             <label class="form-label">Rol</label>
